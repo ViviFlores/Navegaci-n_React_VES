@@ -3,8 +3,18 @@ import { Pantalla1Screen } from '../screens/Pantalla1Screen';
 import { Pantalla2Screen } from '../screens/Pantalla2Screen';
 import { Pantalla3Screen } from '../screens/Pantalla3Screen';
 import { PersonaScreen } from '../screens/PersonaScreen';
+import { Persona2Screen } from '../screens/Persona2Screen';
 
-const Stack = createStackNavigator();
+//Definir la estructura de las pantallas que son parte de la navegación
+export type RootStackParams = {
+    Pantalla1: undefined, //No se envía ningún parámetro
+    Pantalla2: undefined,
+    Pantalla3: undefined,
+    Persona: { id: number, nombre: string, edad: number },
+    Persona2: undefined
+}
+
+const Stack = createStackNavigator<RootStackParams>();
 
 export const StackNavigator = () => {
     return (
@@ -31,6 +41,9 @@ export const StackNavigator = () => {
             <Stack.Screen name="Persona"
                 options={{ title: 'Lista' }}
                 component={PersonaScreen} />
+            <Stack.Screen name="Persona2"
+                options={{ title: 'Hooks' }}
+                component={Persona2Screen} />
         </Stack.Navigator>
     );
 }

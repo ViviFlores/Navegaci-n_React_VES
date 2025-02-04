@@ -2,9 +2,10 @@ import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react';
 import { Button, Text, TouchableOpacity, View } from 'react-native';
 import { styles } from '../theme/appTheme';
+import { RootStackParams } from '../navigator/StackNavigator';
 
 //capturar las propiedades de navegacion
-interface Props extends StackScreenProps<any, any> { };
+type Props = StackScreenProps<RootStackParams, 'Pantalla1'>;
 
 //interface del objeto Persona
 interface Persona {
@@ -39,10 +40,11 @@ export const Pantalla1Screen = ({ navigation }: Props) => {
         title='Ir a persona'
         onPress={() => navigation.navigate('Persona', persona)} />
       <TouchableOpacity
+        style={styles.buttonPersona}
         onPress={() => navigation.navigate('Persona', persona2)}>
-        <Text>Ir a persona2</Text>
+        <Text style={styles.buttonPersonaTexto}>Ir a persona2</Text>
       </TouchableOpacity>
-    </View>
+    </View >
   )
 }
 
